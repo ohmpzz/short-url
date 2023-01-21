@@ -14,8 +14,6 @@ services:
     container_name: short-url-db
     image: mongo:latest
     restart: always
-    ports:
-      - "27017:27017"
     volumes:
       - ./short-url-db:/data
     networks:
@@ -30,7 +28,7 @@ services:
       - 3000
     restart: always
     environment:
-      - VIRTUAL_HOST=short-url-api.ohmpiromrak.com
+      - VIRTUAL_HOST=short-url.ohmpiromrak.com
       - VIRTUAL_PROTO=http
     depends_on:
       - short-url-db
