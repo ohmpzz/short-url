@@ -1,0 +1,44 @@
+version: "3.5"
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    networks:
+      - frontend
+      - api
+
+  short-url-db:
+    container_name: short-url-db
+    image: mongo:latest
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./short-url-db:/data
+    networks:
+      - api
+
+  short-url-api:
+    build:
+      context: ./short-url-api
+      dockerfile: Dockerfile
+    container_name: short-url-api
+    expose:
+      - 3000
+    restart: always
+    environment:
+      - VIRTUAL_HOST=short-url-api.ohmpiromrak.com
+      - VIRTUAL_PROTO=http
+    depends_on:
+      - short-url-db
+    networks:
+      - api
+
+networks:
+  api:
+    name: api
+  frontend:
+    name: frontend
