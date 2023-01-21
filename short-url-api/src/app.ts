@@ -46,7 +46,7 @@ app.use(
     saveUninitialized: true,
     rolling: true,
     store: mongoStoreSession,
-    cookie: { maxAge: 60000 * 5, domain: 'localhost' },
+    cookie: { maxAge: 60000 * 5 },
     genid: function (req) {
       return crypto.randomUUID();
     },
