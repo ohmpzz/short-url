@@ -4,6 +4,7 @@ services:
     image: jwilder/nginx-proxy
     ports:
       - "80:80"
+      - "433:433"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
     networks:
