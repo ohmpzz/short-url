@@ -26,13 +26,13 @@ export function HomePage() {
       </h1>
       <Toolbar />
       <Grid container alignItems="center" justifyContent="center">
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={10} md={6}>
           <CardFormShortUrl />
         </Grid>
       </Grid>
       <Toolbar />
       <Grid container alignItems="center" justifyContent="center">
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={10} md={6}>
           <CardHistoryList />
         </Grid>
       </Grid>
